@@ -2,7 +2,9 @@
 #    Libraries    Section
 Library    SeleniumLibrary
 Library    String
-
+Library    OperatingSystem
+Library    DateTime
+Library    Screenshot
 
 #    Keywords Section
 Resource    ${CURDIR}/resources/keywords/common_keywords.robot

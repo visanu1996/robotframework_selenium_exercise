@@ -1,0 +1,271 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<robot generator="Robot 7.0 (Python 3.12.0 on win32)" generated="2024-07-13T20:18:01.991631" rpa="false" schemaversion="5">
+<suite id="s1" name="Robotframework Selenium Exercise" source="E:\GitHub\robotframework_selenium_exercise">
+<suite id="s1-s1" name="Tests" source="E:\GitHub\robotframework_selenium_exercise\tests">
+<suite id="s1-s1-s1" name="Main" source="E:\GitHub\robotframework_selenium_exercise\tests\main.robot">
+<test id="s1-s1-s1-t1" name="open browser" line="6">
+<kw name="open website" owner="common_keywords">
+<kw name="Open Browser" owner="SeleniumLibrary">
+<msg time="2024-07-13T20:18:02.235491" level="INFO">Opening browser 'chrome' to base url 'https://www.automationexercise.com/'.</msg>
+<arg>${WEB_BROWSER}</arg>
+<arg>${WEB_DRIVER}</arg>
+<doc>Opens a new browser instance to the optional ``url``.</doc>
+<status status="PASS" start="2024-07-13T20:18:02.234494" elapsed="3.454379"/>
+</kw>
+<status status="PASS" start="2024-07-13T20:18:02.233497" elapsed="3.455376"/>
+</kw>
+<kw name="page verification" owner="common_keywords">
+<if>
+<branch type="IF" condition="'${path}[0]' == '/'">
+<kw name="Run Keyword And Return" owner="BuiltIn">
+<kw name="Wait Until Element Is Visible" owner="SeleniumLibrary">
+<arg>xpath=${path}</arg>
+<arg>10</arg>
+<doc>Waits until the element ``locator`` is visible.</doc>
+<status status="PASS" start="2024-07-13T20:18:05.689870" elapsed="0.017951"/>
+</kw>
+<msg time="2024-07-13T20:18:05.708827" level="INFO">Returning from the enclosing user keyword.</msg>
+<arg>Wait Until Element Is Visible</arg>
+<arg>xpath=${path}</arg>
+<arg>10</arg>
+<doc>Runs the specified keyword and returns from the enclosing user keyword.</doc>
+<status status="PASS" start="2024-07-13T20:18:05.689870" elapsed="0.018957"/>
+</kw>
+<status status="PASS" start="2024-07-13T20:18:05.689870" elapsed="0.018957"/>
+</branch>
+<branch type="ELSE IF" condition="'${path}[0]' &lt;&gt; '/'">
+<kw name="Run Keyword And Return" owner="BuiltIn">
+<arg>Wait Until Element Is Visible</arg>
+<arg>id=${path}</arg>
+<arg>10</arg>
+<doc>Runs the specified keyword and returns from the enclosing user keyword.</doc>
+<status status="NOT RUN" start="2024-07-13T20:18:05.708827" elapsed="0.000989"/>
+</kw>
+<status status="NOT RUN" start="2024-07-13T20:18:05.708827" elapsed="0.000989"/>
+</branch>
+<status status="PASS" start="2024-07-13T20:18:05.689870" elapsed="0.019946"/>
+</if>
+<arg>//*/img[contains(@src,'logo.png')]</arg>
+<doc>this keyword is use for verify that the page is visible by detecting by xpath or id</doc>
+<status status="PASS" start="2024-07-13T20:18:05.688873" elapsed="0.020943"/>
+</kw>
+<status status="PASS" start="2024-07-13T20:18:02.232500" elapsed="3.477316"/>
+</test>
+<test id="s1-s1-s1-t2" name="Login" line="11">
+<kw name="sign login page" owner="common_keywords">
+<kw name="Wait Until Element Is Visible" owner="SeleniumLibrary">
+<arg>${nav_bar['sign_login_btn']}</arg>
+<doc>Waits until the element ``locator`` is visible.</doc>
+<status status="PASS" start="2024-07-13T20:18:05.711811" elapsed="0.014960"/>
+</kw>
+<kw name="Click Element" owner="SeleniumLibrary">
+<msg time="2024-07-13T20:18:05.727768" level="INFO">Clicking element '//*/a[@href='/login']'.</msg>
+<arg>${nav_bar['sign_login_btn']}</arg>
+<doc>Click the element identified by ``locator``.</doc>
+<status status="PASS" start="2024-07-13T20:18:05.726771" elapsed="1.363373"/>
+</kw>
+<doc>go to signin / login page</doc>
+<status status="PASS" start="2024-07-13T20:18:05.711811" elapsed="1.378333"/>
+</kw>
+<kw name="page verification" owner="common_keywords">
+<if>
+<branch type="IF" condition="'${path}[0]' == '/'">
+<kw name="Run Keyword And Return" owner="BuiltIn">
+<kw name="Wait Until Element Is Visible" owner="SeleniumLibrary">
+<arg>xpath=${path}</arg>
+<arg>10</arg>
+<doc>Waits until the element ``locator`` is visible.</doc>
+<status status="PASS" start="2024-07-13T20:18:07.092139" elapsed="0.013963"/>
+</kw>
+<msg time="2024-07-13T20:18:07.106102" level="INFO">Returning from the enclosing user keyword.</msg>
+<arg>Wait Until Element Is Visible</arg>
+<arg>xpath=${path}</arg>
+<arg>10</arg>
+<doc>Runs the specified keyword and returns from the enclosing user keyword.</doc>
+<status status="PASS" start="2024-07-13T20:18:07.092139" elapsed="0.013963"/>
+</kw>
+<status status="PASS" start="2024-07-13T20:18:07.092139" elapsed="0.013963"/>
+</branch>
+<branch type="ELSE IF" condition="'${path}[0]' &lt;&gt; '/'">
+<kw name="Run Keyword And Return" owner="BuiltIn">
+<arg>Wait Until Element Is Visible</arg>
+<arg>id=${path}</arg>
+<arg>10</arg>
+<doc>Runs the specified keyword and returns from the enclosing user keyword.</doc>
+<status status="NOT RUN" start="2024-07-13T20:18:07.107099" elapsed="0.000000"/>
+</kw>
+<status status="NOT RUN" start="2024-07-13T20:18:07.106102" elapsed="0.000997"/>
+</branch>
+<status status="PASS" start="2024-07-13T20:18:07.092139" elapsed="0.014960"/>
+</if>
+<arg>${login['page_verify']}</arg>
+<doc>this keyword is use for verify that the page is visible by detecting by xpath or id</doc>
+<status status="PASS" start="2024-07-13T20:18:07.091142" elapsed="0.015957"/>
+</kw>
+<kw name="screen_capture" owner="common_keywords">
+<kw name="Get Current Date" owner="DateTime">
+<msg time="2024-07-13T20:18:07.108097" level="INFO">${date} = 13072024_201807108097</msg>
+<var>${date}</var>
+<arg>result_format=%d%m%Y_%H%M%S%f</arg>
+<doc>Returns current local or UTC time with an optional increment.</doc>
+<status status="PASS" start="2024-07-13T20:18:07.108097" elapsed="0.000000"/>
+</kw>
+<kw name="Normalize Path" owner="OperatingSystem">
+<msg time="2024-07-13T20:18:07.109094" level="INFO">${path} = E:\GitHub\robotframework_selenium_exercise\results\snapshots</msg>
+<var>${path}</var>
+<arg>E:\\GitHub\\robotframework_selenium_exercise\\resources\\keywords../../../results/snapshots/</arg>
+<doc>Normalizes the given path.</doc>
+<status status="PASS" start="2024-07-13T20:18:07.108097" elapsed="0.000997"/>
+</kw>
+<kw name="Run Keyword And Return Status" owner="BuiltIn">
+<kw name="Directory Should Exist" owner="OperatingSystem">
+<msg time="2024-07-13T20:18:07.110092" level="FAIL">Directory 'E:\GitHub\robotframework_selenium_exercise\results\snapshots' does not exist.</msg>
+<arg>${path}</arg>
+<doc>Fails unless the given path points to an existing directory.</doc>
+<status status="FAIL" start="2024-07-13T20:18:07.109094" elapsed="0.000998">Directory 'E:\GitHub\robotframework_selenium_exercise\results\snapshots' does not exist.</status>
+</kw>
+<msg time="2024-07-13T20:18:07.110092" level="INFO">${is_exist} = False</msg>
+<var>${is_exist}</var>
+<arg>Directory Should Exist</arg>
+<arg>${path}</arg>
+<doc>Runs the given keyword with given arguments and returns the status as a Boolean value.</doc>
+<status status="PASS" start="2024-07-13T20:18:07.109094" elapsed="0.001994"/>
+</kw>
+<kw name="Run Keyword If" owner="BuiltIn">
+<kw name="Create Directory" owner="OperatingSystem">
+<msg time="2024-07-13T20:18:07.112085" level="INFO" html="true">Created directory '&lt;a href="file://E:\GitHub\robotframework_selenium_exercise\results\snapshots"&gt;E:\GitHub\robotframework_selenium_exercise\results\snapshots&lt;/a&gt;'.</msg>
+<arg>${path}</arg>
+<doc>Creates the specified directory.</doc>
+<status status="PASS" start="2024-07-13T20:18:07.111088" elapsed="0.000997"/>
+</kw>
+<arg>not ${is_exist}</arg>
+<arg>Create Directory</arg>
+<arg>${path}</arg>
+<doc>Runs the given keyword with the given arguments, if ``condition`` is true.</doc>
+<status status="PASS" start="2024-07-13T20:18:07.111088" elapsed="0.000997"/>
+</kw>
+<kw name="Set Screenshot Directory" owner="Screenshot">
+<arg>${path}</arg>
+<doc>Sets the directory where screenshots are saved.</doc>
+<status status="PASS" start="2024-07-13T20:18:07.112085" elapsed="0.000998"/>
+</kw>
+<kw name="Take Screenshot" owner="Screenshot">
+<msg time="2024-07-13T20:18:07.195863" level="INFO" html="true">&lt;a href="snapshots/login_13072024_201807108097_1.jpg"&gt;&lt;img src="snapshots/login_13072024_201807108097_1.jpg" width="100%"&gt;&lt;/a&gt;</msg>
+<arg>${test_module}_${date}</arg>
+<arg>100%</arg>
+<doc>Takes a screenshot in JPEG format and embeds it into the log file.</doc>
+<status status="PASS" start="2024-07-13T20:18:07.113083" elapsed="0.082780"/>
+</kw>
+<arg>test_module=login</arg>
+<doc>for screen capturing</doc>
+<status status="PASS" start="2024-07-13T20:18:07.107099" elapsed="0.088764"/>
+</kw>
+<kw name="login" owner="common_keywords">
+<kw name="Input Text" owner="SeleniumLibrary">
+<msg time="2024-07-13T20:18:07.198854" level="INFO">Typing text 'Test' into text field '//form[@action="/login"]/input[@name = 'email']'.</msg>
+<arg>${login['input_email']}</arg>
+<arg>${login_email}</arg>
+<doc>Types the given ``text`` into the text field identified by ``locator``.</doc>
+<status status="PASS" start="2024-07-13T20:18:07.197856" elapsed="0.064827"/>
+</kw>
+<kw name="Input Password" owner="SeleniumLibrary">
+<msg time="2024-07-13T20:18:07.263680" level="INFO">Typing password into text field 'name=password'.</msg>
+<msg time="2024-07-13T20:18:07.285622" level="INFO">Temporally setting log level to: NONE</msg>
+<arg>name=${login['input_password']}</arg>
+<arg>${login_password}</arg>
+<doc>Types the given password into the text field identified by ``locator``.</doc>
+<status status="PASS" start="2024-07-13T20:18:07.262683" elapsed="0.049867"/>
+</kw>
+<kw name="screen_capture" owner="common_keywords">
+<kw name="Get Current Date" owner="DateTime">
+<msg time="2024-07-13T20:18:07.313547" level="INFO">${date} = 13072024_201807313547</msg>
+<var>${date}</var>
+<arg>result_format=%d%m%Y_%H%M%S%f</arg>
+<doc>Returns current local or UTC time with an optional increment.</doc>
+<status status="PASS" start="2024-07-13T20:18:07.313547" elapsed="0.000000"/>
+</kw>
+<kw name="Normalize Path" owner="OperatingSystem">
+<msg time="2024-07-13T20:18:07.314544" level="INFO">${path} = E:\GitHub\robotframework_selenium_exercise\results\snapshots</msg>
+<var>${path}</var>
+<arg>E:\\GitHub\\robotframework_selenium_exercise\\resources\\keywords../../../results/snapshots/</arg>
+<doc>Normalizes the given path.</doc>
+<status status="PASS" start="2024-07-13T20:18:07.314544" elapsed="0.000000"/>
+</kw>
+<kw name="Run Keyword And Return Status" owner="BuiltIn">
+<kw name="Directory Should Exist" owner="OperatingSystem">
+<msg time="2024-07-13T20:18:07.316540" level="INFO" html="true">Directory '&lt;a href="file://E:\GitHub\robotframework_selenium_exercise\results\snapshots"&gt;E:\GitHub\robotframework_selenium_exercise\results\snapshots&lt;/a&gt;' exists.</msg>
+<arg>${path}</arg>
+<doc>Fails unless the given path points to an existing directory.</doc>
+<status status="PASS" start="2024-07-13T20:18:07.315543" elapsed="0.000997"/>
+</kw>
+<msg time="2024-07-13T20:18:07.316540" level="INFO">${is_exist} = True</msg>
+<var>${is_exist}</var>
+<arg>Directory Should Exist</arg>
+<arg>${path}</arg>
+<doc>Runs the given keyword with given arguments and returns the status as a Boolean value.</doc>
+<status status="PASS" start="2024-07-13T20:18:07.315543" elapsed="0.000997"/>
+</kw>
+<kw name="Run Keyword If" owner="BuiltIn">
+<arg>not ${is_exist}</arg>
+<arg>Create Directory</arg>
+<arg>${path}</arg>
+<doc>Runs the given keyword with the given arguments, if ``condition`` is true.</doc>
+<status status="PASS" start="2024-07-13T20:18:07.316540" elapsed="0.000996"/>
+</kw>
+<kw name="Set Screenshot Directory" owner="Screenshot">
+<arg>${path}</arg>
+<doc>Sets the directory where screenshots are saved.</doc>
+<status status="PASS" start="2024-07-13T20:18:07.317536" elapsed="0.000000"/>
+</kw>
+<kw name="Take Screenshot" owner="Screenshot">
+<msg time="2024-07-13T20:18:07.354438" level="INFO" html="true">&lt;a href="snapshots/login_13072024_201807313547_1.jpg"&gt;&lt;img src="snapshots/login_13072024_201807313547_1.jpg" width="100%"&gt;&lt;/a&gt;</msg>
+<arg>${test_module}_${date}</arg>
+<arg>100%</arg>
+<doc>Takes a screenshot in JPEG format and embeds it into the log file.</doc>
+<status status="PASS" start="2024-07-13T20:18:07.318534" elapsed="0.035904"/>
+</kw>
+<arg>test_module=login</arg>
+<doc>for screen capturing</doc>
+<status status="PASS" start="2024-07-13T20:18:07.312550" elapsed="0.041888"/>
+</kw>
+<kw name="Click Element" owner="SeleniumLibrary">
+<msg time="2024-07-13T20:18:07.355435" level="INFO">Clicking element '//button[@data-qa="login-button"]'.</msg>
+<arg>${login['confirm_login']}</arg>
+<doc>Click the element identified by ``locator``.</doc>
+<status status="PASS" start="2024-07-13T20:18:07.354438" elapsed="0.041889"/>
+</kw>
+<arg>login_email=Test</arg>
+<arg>login_password=Testing</arg>
+<doc>to use this keyword you can pass two parameter the first one is an *email* the second is a *password*</doc>
+<status status="PASS" start="2024-07-13T20:18:07.196859" elapsed="0.199468"/>
+</kw>
+<status status="PASS" start="2024-07-13T20:18:05.710814" elapsed="1.685513"/>
+</test>
+<kw name="Close All Browsers" owner="SeleniumLibrary" type="TEARDOWN">
+<doc>Closes all open browsers and resets the browser cache.</doc>
+<status status="PASS" start="2024-07-13T20:18:07.398322" elapsed="6.205064"/>
+</kw>
+<status status="PASS" start="2024-07-13T20:18:02.018560" elapsed="11.584826"/>
+</suite>
+<status status="PASS" start="2024-07-13T20:18:02.015567" elapsed="11.589809"/>
+</suite>
+<status status="PASS" start="2024-07-13T20:18:01.995620" elapsed="11.610754"/>
+</suite>
+<statistics>
+<total>
+<stat pass="2" fail="0" skip="0">All Tests</stat>
+</total>
+<tag>
+</tag>
+<suite>
+<stat pass="2" fail="0" skip="0" id="s1" name="Robotframework Selenium Exercise">Robotframework Selenium Exercise</stat>
+<stat pass="2" fail="0" skip="0" id="s1-s1" name="Tests">Robotframework Selenium Exercise.Tests</stat>
+<stat pass="2" fail="0" skip="0" id="s1-s1-s1" name="Main">Robotframework Selenium Exercise.Tests.Main</stat>
+</suite>
+</statistics>
+<errors>
+<msg time="2024-07-13T20:18:02.225519" level="WARN">Imported resource file 'E:\GitHub\robotframework_selenium_exercise\resources\keywords\register_keywords.robot' is empty.</msg>
+<msg time="2024-07-13T20:18:02.228510" level="WARN">Imported resource file 'E:\GitHub\robotframework_selenium_exercise\resources\locators\register_locators.robot' is empty.</msg>
+<msg time="2024-07-13T20:18:02.230504" level="WARN">Imported resource file 'E:\GitHub\robotframework_selenium_exercise\resources\variables\register_variables.robot' is empty.</msg>
+</errors>
+</robot>
