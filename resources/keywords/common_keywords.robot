@@ -1,21 +1,26 @@
+*** Settings ***
+Library    SeleniumLibrary
 *** Keywords ***
 open website
     Open Browser    ${WEB_BROWSER}    ${WEB_DRIVER}    
 
+# page verification
+#     [Documentation]    this keyword is use for verify that the page is visible by detecting by xpath or id
+#     ...    
+#     ...    to use *id* as a path just type it id
+#     ...    
+#     ...    to use *xpath* as a path you need to have / to be the fisrt string
+
+#     [Arguments]    ${path}
+#     IF    '${path}[0]' == '/'
+#     Run Keyword And Return    Wait Until Element Is Visible    xpath=${path}    10 
+#     ELSE IF    '${path}[0]' <> '/'
+#     Run Keyword And Return    Wait Until Element Is Visible    id=${path}    10  
+#     END
 page verification
-    [Documentation]    this keyword is use for verify that the page is visible by detecting by xpath or id
-    ...    
-    ...    to use *id* as a path just type it id
-    ...    
-    ...    to use *xpath* as a path you need to have / to be the fisrt string
-
-    [Arguments]    ${path}
-    IF    '${path}[0]' == '/'
-    Run Keyword And Return    Wait Until Element Is Visible    xpath=${path}    10 
-    ELSE IF    '${path}[0]' <> '/'
-    Run Keyword And Return    Wait Until Element Is Visible    id=${path}    10  
-    END
-
+    [Documentation]    to verify that a web page contains the specific text you're looking for
+    [Arguments]    ${verify_by_text}
+    Wait Until Page Contains    ${verify_by_text}
 homepage
     [Documentation]    go to home page
     Wait Until Element Is Visible    ${nav_bar['home_btn']}
