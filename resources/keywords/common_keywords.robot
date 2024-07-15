@@ -17,23 +17,25 @@ open website
 #     ELSE IF    '${path}[0]' <> '/'
 #     Run Keyword And Return    Wait Until Element Is Visible    id=${path}    10  
 #     END
-page verification
+page_verification
     [Documentation]    to verify that a web page contains the specific text you're looking for
-    [Arguments]    ${verify_by_text}
-    Wait Until Page Contains    ${verify_by_text}
+    [Arguments]    ${verify}
+    ${n_xpath}    Evaluate    f"//*[contains(text(), '${verify}')]" 
+    Log To Console    ${n_xpath}                 
+    Wait Until Element Is Visible    ${n_xpath}
 homepage
     [Documentation]    go to home page
     Wait Until Element Is Visible    ${nav_bar['home_btn']}
     Click Element    ${nav_bar['home_btn']}
 
 
-sign login page
+sign_login_page
     [Documentation]    go to signin / login page
     Wait Until Element Is Visible    ${nav_bar['sign_login_btn']}
     Click Element    ${nav_bar['sign_login_btn']}
 
 
-contact us
+contact_us
     [Documentation]    go to contact us
     Wait Until Element Is Visible    ${nav_bar['contact_btn']}
     Click Element    ${nav_bar['contact_btn']}
@@ -42,10 +44,10 @@ contact us
 login
     [Documentation]    to use this keyword you can pass two parameter the first one is an *email* the second is a *password*
     [Arguments]    ${login_email}    ${login_password}
-    Input Text    ${login['input_email']}    ${login_email}    
-    Input Password    name=${login['input_password']}    ${login_password}
+    Input Text    ${login_page_locator['email']}    ${login_email}    
+    Input Password    ${login_page_locator['password']}    ${login_password}
     screen_capture    test_module=login
-    Click Element    ${login['confirm_login']}
+    Click Element    ${login_page_locator['confirm_login']}
 
 screen_capture
     [Documentation]    for screen capturing
@@ -59,3 +61,12 @@ screen_capture
     Screenshot.Set Screenshot Directory    ${path}
     Screenshot.Take Screenshot    ${test_module}_${date}    100%    
 
+go_to_text
+    [Documentation]    scroll to text 
+    ...    
+    ...    *Best to use* if there is single word you are trying to find on the current page
+    [Arguments]    ${goto}
+    ${n_xpath}    Evaluate    f"//*[contains(text(), '${goto}')]" 
+    ${is_error}    Run Keyword And Return Status    Wait Until Element Is Visible    ${n_xpath}
+    Run Keyword If    not ${is_error}    Scroll Element Into View     ${n_xpath}
+    
