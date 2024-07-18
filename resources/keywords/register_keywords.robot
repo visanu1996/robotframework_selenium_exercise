@@ -42,3 +42,13 @@ add_address_info
     #Select Country
     ${select_country}   Convert To Title Case    ${country}   
     Select From List By Value    ${address_info['country']}    ${select_country}
+confirm_register
+    [Documentation]    confirm create user on add address info page
+    Click Element   ${create_account}
+
+
+confirm_account_create
+    common_keywords.page_verification    Account Created!
+    Capture Page Screenshot
+    Click Element    ${confirm_account}
+    

@@ -16,7 +16,8 @@ Signin
     register_keywords.add_account_info    FakePassword!    dob=1994/1/1
     register_keywords.add_address_info    FirstName    LastName    india    0555555555
     screen_capture    test_module=register
-
+    register_keywords.confirm_register
+    register_keywords.confirm_account_create
 # Login
 #     common_keywords.sign_login_page
 #     common_keywords.page_verification    ${login_page_locator['verify_text']}  

@@ -1,5 +1,3 @@
-*** Settings ***
-Library    SeleniumLibrary
 *** Keywords ***
 open website
     Open Browser    ${WEB_BROWSER}    ${WEB_DRIVER}    
@@ -69,4 +67,7 @@ go_to_text
     ${n_xpath}    Evaluate    f"//*[contains(text(), '${goto}')]" 
     ${is_error}    Run Keyword And Return Status    Wait Until Element Is Visible    ${n_xpath}
     Run Keyword If    not ${is_error}    Scroll Element Into View     ${n_xpath}
+    
+sign_out
+    Click Element    ${nav_bar['logout_btn']}
     
