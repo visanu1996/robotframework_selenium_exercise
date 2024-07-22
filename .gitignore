@@ -1,0 +1,96 @@
+# Byte-compiled / optimized / DLL files
+__pycache__/
+*.py[cod]
+*$py.class
+
+# Cython debug symbols
+cython_debug/
+
+# Robot Framework log files
+*.html
+*.xml
+*.png
+*.log
+*.tsv
+*.jpg
+
+# Configuration files
+*.config
+*.cfg
+*.ini
+
+# Environment variables files
+.env
+
+# Jupyter Notebook files
+.ipynb_checkpoints
+
+# MacOS files
+.DS_Store
+
+# Windows files
+Thumbs.db
+desktop.ini
+
+# Virtual environment
+env/
+venv/
+ENV/
+.VENV/
+
+# Python egg files
+*.egg
+*.egg-info/
+dist/
+build/
+eggs/
+parts/
+sdist/
+var/
+wheels/
+*.manifest
+*.spec
+
+# Installer logs
+pip-log.txt
+pip-delete-this-directory.txt
+
+# Unit test / coverage reports
+htmlcov/
+.tox/
+.coverage
+coverage.xml
+*.cover
+*.py,cover
+.hypothesis/
+
+# PyCharm
+.idea/
+
+# VS Code
+.vscode/
+.history/
+
+# Local configurations
+local_settings.py
+
+# User-specific files
+*.swp
+*~
+*.bak
+*.orig
+*.rej
+*.sublime-workspace
+*.sublime-project
+*.vscode/
+.vscode/*
+
+# Miscellaneous
+*.log
+*.bak
+*.tmp
+*.old
+*.out
+
+# Custom: Add any other files or directories specific to your project
+
