@@ -49,6 +49,7 @@ confirm_register
 
 confirm_account_create
     common_keywords.page_verification    Account Created!
-    Capture Page Screenshot
     Click Element    ${confirm_account}
     
+
+

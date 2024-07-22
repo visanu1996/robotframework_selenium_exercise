@@ -1,3 +1,5 @@
+*** Settings ***
+Library    SeleniumLibrary
 *** Keywords ***
 open website
     Open Browser    ${WEB_BROWSER}    ${WEB_DRIVER}    
@@ -71,3 +73,13 @@ go_to_text
 sign_out
     Click Element    ${nav_bar['logout_btn']}
     
+inform_contact
+    [Documentation]    use this keyword to inform detail from contact page
+    [Arguments]    ${first_name}    ${email}
+    Input Text    name=${contact_locator['name']}    ${first_name}
+    Input Text    name=${contact_locator['email']}    ${email}    
+    Input Text    name=${contact_locator['subject']}    Testing Robotframework
+    Input Text    name=${contact_locator['body']}    put your message here
+#    Choose File    name=${contact_locator['file_upload']}    file_path
+submit_contact_us
+    Click Element    name=${contact_locator['submit_btn']}
