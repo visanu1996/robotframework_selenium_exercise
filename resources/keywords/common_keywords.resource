@@ -2,7 +2,10 @@
 Library    SeleniumLibrary
 *** Keywords ***
 open website
-    Open Browser    ${WEB_BROWSER}    ${WEB_DRIVER}    
+    
+    Open Browser    ${WEB_BROWSER}    ${WEB_DRIVER}
+    Maximize Browser Window
+    Sleep    3
 
 # page verification
 #     [Documentation]    this keyword is use for verify that the page is visible by detecting by xpath or id
@@ -17,29 +20,22 @@ open website
 #     ELSE IF    '${path}[0]' <> '/'
 #     Run Keyword And Return    Wait Until Element Is Visible    id=${path}    10  
 #     END
+
 page_verification
     [Documentation]    to verify that a web page contains the specific text you're looking for
-    [Arguments]    ${verify}
-    ${n_xpath}    Evaluate    f"//*[contains(text(), '${verify}')]" 
-    Log To Console    ${n_xpath}                 
-    Wait Until Element Is Visible    ${n_xpath}
+    [Arguments]    ${verify}            
+    Wait until element visible and click    //*[contains(text(), "${verify}")]
 homepage
     [Documentation]    go to home page
-    Wait Until Element Is Visible    ${nav_bar['home_btn']}
-    Click Element    ${nav_bar['home_btn']}
-
+    Wait until element visible and click    ${nav_bar['home_btn']}
 
 sign_login_page
     [Documentation]    go to signin / login page
-    Wait Until Element Is Visible    ${nav_bar['sign_login_btn']}
-    Click Element    ${nav_bar['sign_login_btn']}
-
+    Wait until element visible and click    ${nav_bar['sign_login_btn']}
 
 contact_us
     [Documentation]    go to contact us
-    Wait Until Element Is Visible    ${nav_bar['contact_btn']}
-    Click Element    ${nav_bar['contact_btn']}
-
+    Wait until element visible and click    ${nav_bar['contact_btn']}
 
 login
     [Documentation]    to use this keyword you can pass two parameter the first one is an *email* the second is a *password*
@@ -62,13 +58,11 @@ screen_capture
     Screenshot.Take Screenshot    ${test_module}_${date}    100%    
 
 go_to_text
-    [Documentation]    scroll to text 
-    ...    
-    ...    *Best to use* if there is single word you are trying to find on the current page
+    [Documentation]    Scroll to a text element on the current page.
+    ...                *Best to use* if there is a single word you are trying to find.
     [Arguments]    ${goto}
-    ${n_xpath}    Evaluate    f"//*[contains(text(), '${goto}')]" 
-    ${is_error}    Run Keyword And Return Status    Wait Until Element Is Visible    ${n_xpath}
-    Run Keyword If    not ${is_error}    Scroll Element Into View     ${n_xpath}
+    ${is_error}    Run Keyword And Return Status    Wait Until Element Is Visible    //*[contains(text(), '${goto}')]
+    Run Keyword If    not ${is_error}    Scroll Element Into View     //*[contains(text(), '${goto}')]
     
 sign_out
     Click Element    ${nav_bar['logout_btn']}
@@ -83,3 +77,24 @@ inform_contact
 #    Choose File    name=${contact_locator['file_upload']}    file_path
 submit_contact_us
     Click Element    name=${contact_locator['submit_btn']}
+
+product_page
+    [Documentation]    go to product page
+    Wait until element visible and click    ${nav_bar['product_btn']}
+
+test_cases_page
+    [Documentation]    go to test cases page
+    Wait until element visible and click     ${nav_bar['test_cases_btn']}
+
+
+Wait until element visible and click
+    [Documentation]    wait until element is Visible with for loop
+    [Arguments]    ${element}
+    ${is_visible}    Run Keyword And Return Status     Wait Until Element Is Visible    ${element}
+    FOR    ${counter}    IN RANGE    1    ${global_count}
+        IF    ${is_visible}    
+            Click Element    ${element}    
+            Exit For Loop
+        END
+    END
+    Run Keyword If    not ${is_visible}    Log    Element not found.

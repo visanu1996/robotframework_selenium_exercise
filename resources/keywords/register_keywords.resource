@@ -51,5 +51,3 @@ confirm_account_create
     common_keywords.page_verification    Account Created!
     Click Element    ${confirm_account}
     
-
-

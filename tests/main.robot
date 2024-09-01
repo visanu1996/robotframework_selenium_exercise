@@ -1,13 +1,12 @@
 *** Settings ***
 Resource    ../import.robot
-Suite Teardown    Close All Browsers
+Suite Setup    common_keywords.open website
+Suite Teardown    Close All Browsers    
 
 *** Test Cases ***
 open browser
     common_keywords.open website
-    Maximize Browser Window
     common_keywords.page_verification    Home
-    
 
 Signin
     common_keywords.sign_login_page
@@ -42,7 +41,18 @@ signin_existing
     common_keywords.screen_capture    test_module=register_existing
 
 contact_us
+    [Tags]    contact
     common_keywords.contact_us
+    common_keywords.page_verification    contact
     common_keywords.inform_contact    first_name=    email=
-    common_keywords.screen_capture    contact_us
+    common_keywords.screen_capture    test_module=contact_us
     common_keywords.submit_contact_us
+
+products
+    common_keywords.product_page
+    common_keywords.screen_capture    test_module=products
+
+verify_testcases_page
+    [Tags]    testcases_page
+    common_keywords.test_cases_page
+    common_keywords.screen_capture    test_module=test_cases
