@@ -4,8 +4,7 @@ Suite Setup    common_keywords.open website
 Suite Teardown    Close All Browsers    
 
 *** Test Cases ***
-open browser
-    common_keywords.open website
+home page verify
     common_keywords.page_verification    Home
 
 Signin
@@ -26,7 +25,7 @@ Login
     common_keywords.login    login_email=robottesting10234@gmail.com    login_password=FakePassword!
     common_keywords.sign_out
 
-login_fault_account
+login fault account
     common_keywords.sign_login_page
     common_keywords.page_verification    ${login_page_locator['verify_text']}  
     common_keywords.screen_capture    test_module=login
@@ -34,13 +33,13 @@ login_fault_account
     common_keywords.page_verification    incorrect!
     common_keywords.screen_capture    test_module=login_failed
 
-signin_existing
+signin existing
     common_keywords.sign_login_page
     register_keywords.register    testName    robottesting10234@gmail.com 
     common_keywords.page_verification    exist!
     common_keywords.screen_capture    test_module=register_existing
 
-contact_us
+contact us
     [Tags]    contact
     common_keywords.contact_us
     common_keywords.page_verification    contact
@@ -49,10 +48,12 @@ contact_us
     common_keywords.submit_contact_us
 
 products
+    [Tags]    products
     common_keywords.product_page
     common_keywords.screen_capture    test_module=products
-
-verify_testcases_page
+    common_keywords.view_product    product_id=1
+    common_keywords.verify_product_view
+verify testcases page
     [Tags]    testcases_page
     common_keywords.test_cases_page
     common_keywords.screen_capture    test_module=test_cases

@@ -24,18 +24,18 @@ open website
 page_verification
     [Documentation]    to verify that a web page contains the specific text you're looking for
     [Arguments]    ${verify}            
-    Wait until element visible and click    //*[contains(text(), "${verify}")]
+    Wait_until_element_visible_and_click    //*[contains(text(), "${verify}")]
 homepage
     [Documentation]    go to home page
-    Wait until element visible and click    ${nav_bar['home_btn']}
+    Wait_until_element_visible_and_click    ${nav_bar['home_btn']}
 
 sign_login_page
     [Documentation]    go to signin / login page
-    Wait until element visible and click    ${nav_bar['sign_login_btn']}
+    Wait_until_element_visible_and_click    ${nav_bar['sign_login_btn']}
 
 contact_us
     [Documentation]    go to contact us
-    Wait until element visible and click    ${nav_bar['contact_btn']}
+    Wait_until_element_visible_and_click    ${nav_bar['contact_btn']}
 
 login
     [Documentation]    to use this keyword you can pass two parameter the first one is an *email* the second is a *password*
@@ -80,17 +80,33 @@ submit_contact_us
 
 product_page
     [Documentation]    go to product page
-    Wait until element visible and click    ${nav_bar['product_btn']}
+    Wait_until_element_visible_and_click    ${nav_bar['product_btn']}
+    Wait Until Element Is Visible    ${Category['women']}
+view_product
+    [Documentation]    view product item by product id
+    [Arguments]    ${product_id}=1
+    Wait_until_element_visible_and_click    //a[@href='/product_details/${product_id}']
+
+verify_product_view
+    [Documentation]    to verify that the detail in product view is not empty
+    ${name}    Get Text    ${product_details['name']}
+    ${category}    Get Text    ${product_details['category']}
+    ${price}    Get Text    ${product_details['price']}
+    ${availability}    Get Text    ${product_details['availability']}
+    ${condition}    Get Text    ${product_details['condition']}
+    ${brand}    Get Text    ${product_details['brand']}
+    @{product_details}    Create List    ${name}    ${category}    ${price}    ${availability}    ${condition}    ${brand}
+    Log    product details : @{product_details}
 
 test_cases_page
     [Documentation]    go to test cases page
-    Wait until element visible and click     ${nav_bar['test_cases_btn']}
+    Wait_until_element_visible_and_click     ${nav_bar['test_cases_btn']}
 
 
-Wait until element visible and click
+Wait_until_element_visible_and_click
     [Documentation]    wait until element is Visible with for loop
     [Arguments]    ${element}
-    ${is_visible}    Run Keyword And Return Status     Wait Until Element Is Visible    ${element}
+    ${is_visible}    Run Keyword And Return Status     Wait Until Element Is Visible    ${element}    5
     FOR    ${counter}    IN RANGE    1    ${global_count}
         IF    ${is_visible}    
             Click Element    ${element}    
