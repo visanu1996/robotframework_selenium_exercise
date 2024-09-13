@@ -1,0 +1,10 @@
+*** Variables ***
+
+#--------------------- product view Sections ----------------------------
+&{product_details}    name=//div[@class='product-information']//h2    category=//div[@class='product-information']//p[contains(.,'Category')]    price=//div[@class='product-information']/span/span[contains(.,'Rs. ')]    availability=//div[@class='product-information']//b[contains(.,'Availability')]/parent::p    condition=//div[@class='product-information']//b[contains(.,'Condition')]/parent::p    brand=//div[@class='product-information']//b[contains(.,'Brand')]/parent::p
+
+#--------------------- Category Sections ----------------------------
+&{Category}    women=//a[@href='#Women']    men=//a[@href='#Men']    kid=//a[@href='#Kids']
+&{Women_sub_category}    dress=//a[.='Dress 'and contains(@href,'category_product')]    tops=//a[.='Tops 'and contains(@href,'category_product')]    saree=//a[.='Saree 'and contains(@href,'category_product')]
+&{Men_sub_category}    t_shirt=//a[.='Tshirts 'and contains(@href,'category_product')]    jeans=//a[.='Jeans 'and contains(@href,'category_product')]
+&{Kid_sub_category}    dress=//div[@id='Kids']//a[.='Dress 'and contains(@href,'category_product')]    tops_and_shirt=//div[@id='Kids']//a[.='Tops & Shirts 'and contains(@href,'category_product')]
