@@ -4,7 +4,7 @@ Suite Setup    common_keywords.open website
 Suite Teardown    Close All Browsers    
 
 *** Test Cases ***
-home page verify
+Home Page Verify
     common_keywords.page_verification    Home
 
 Signin
@@ -25,7 +25,7 @@ Login
     common_keywords.login    login_email=robottesting10234@gmail.com    login_password=FakePassword!
     common_keywords.sign_out
 
-login fault account
+Login Fault Account
     common_keywords.sign_login_page
     common_keywords.page_verification    ${login_page_locator['verify_text']}  
     common_keywords.screen_capture    test_module=login
@@ -33,13 +33,13 @@ login fault account
     common_keywords.page_verification    incorrect!
     common_keywords.screen_capture    test_module=login_failed
 
-signin existing
+Signin Existing
     common_keywords.sign_login_page
     register_keywords.register    testName    robottesting10234@gmail.com 
     common_keywords.page_verification    exist!
     common_keywords.screen_capture    test_module=register_existing
 
-contact us
+Contact Us
     [Tags]    contact
     common_keywords.contact_us
     common_keywords.page_verification    contact
@@ -47,13 +47,19 @@ contact us
     common_keywords.screen_capture    test_module=contact_us
     common_keywords.submit_contact_us
 
-products
+Products
     [Tags]    products
-    common_keywords.product_page
+    product_keywords.product_page
     common_keywords.screen_capture    test_module=products
-    common_keywords.view_product    product_id=1
-    common_keywords.verify_product_view
-verify testcases page
+    product_keywords.view_product    product_id=1
+    product_keywords.verify_product_view
+Verify Testcases Page
     [Tags]    testcases_page
     common_keywords.test_cases_page
     common_keywords.screen_capture    test_module=test_cases
+
+Search Products
+    [Tags]    search_product
+    product_keywords.product_page
+    product_keywords.search_product    product_name=Blue Top
+    common_keywords.screen_capture    test_module=search product

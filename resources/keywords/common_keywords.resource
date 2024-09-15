@@ -1,5 +1,3 @@
-*** Settings ***
-Library    SeleniumLibrary
 *** Keywords ***
 open website
     
@@ -54,6 +52,7 @@ screen_capture
     ${path}    Normalize Path    ${CURDIR}../../../results/snapshots/
     ${is_exist}    Run Keyword And Return Status    Directory Should Exist    ${path}
     Run Keyword If    not ${is_exist}    Create Directory    ${path}
+    Sleep    5
     Screenshot.Set Screenshot Directory    ${path}
     Screenshot.Take Screenshot    ${test_module}_${date}    100%    
 
@@ -63,7 +62,13 @@ go_to_text
     [Arguments]    ${goto}
     ${is_error}    Run Keyword And Return Status    Wait Until Element Is Visible    //*[contains(text(), '${goto}')]
     Run Keyword If    not ${is_error}    Scroll Element Into View     //*[contains(text(), '${goto}')]
-    
+
+go_to_element
+    [Documentation]    Scroll to an element on the current page.
+    [Arguments]    ${element}
+    ${is_error}    Run Keyword And Return Status    Wait Until Element Is Visible    ${element}
+    Run Keyword If    not ${is_error}    Scroll Element Into View     ${element}
+
 sign_out
     Click Element    ${nav_bar['logout_btn']}
     
@@ -78,26 +83,6 @@ inform_contact
 submit_contact_us
     Click Element    name=${contact_locator['submit_btn']}
 
-product_page
-    [Documentation]    go to product page
-    Wait_until_element_visible_and_click    ${nav_bar['product_btn']}
-    Wait Until Element Is Visible    ${Category['women']}
-view_product
-    [Documentation]    view product item by product id
-    [Arguments]    ${product_id}=1
-    Wait_until_element_visible_and_click    //a[@href='/product_details/${product_id}']
-
-verify_product_view
-    [Documentation]    to verify that the detail in product view is not empty
-    ${name}    Get Text    ${product_details['name']}
-    ${category}    Get Text    ${product_details['category']}
-    ${price}    Get Text    ${product_details['price']}
-    ${availability}    Get Text    ${product_details['availability']}
-    ${condition}    Get Text    ${product_details['condition']}
-    ${brand}    Get Text    ${product_details['brand']}
-    @{product_details}    Create List    ${name}    ${category}    ${price}    ${availability}    ${condition}    ${brand}
-    Log    product details : @{product_details}
-
 test_cases_page
     [Documentation]    go to test cases page
     Wait_until_element_visible_and_click     ${nav_bar['test_cases_btn']}
@@ -110,6 +95,18 @@ Wait_until_element_visible_and_click
     FOR    ${counter}    IN RANGE    1    ${global_count}
         IF    ${is_visible}    
             Click Element    ${element}    
+            Exit For Loop
+        END
+    END
+    Run Keyword If    not ${is_visible}    Log    Element not found.
+
+Wait_until_element_visible_and_insert
+    [Documentation]    wait until element is Visible with for loop
+    [Arguments]    ${element}    ${text}
+    ${is_visible}    Run Keyword And Return Status     Wait Until Element Is Visible    ${element}    5
+    FOR    ${counter}    IN RANGE    1    ${global_count}
+        IF    ${is_visible}    
+            Input Text    ${element}    ${text}   
             Exit For Loop
         END
     END

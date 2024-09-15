@@ -8,7 +8,9 @@ Library    Screenshot
 
 #    Keywords Section
 Resource    ${CURDIR}/resources/keywords/common_keywords.resource
+Resource    ${CURDIR}/resources/keywords/product_keywords.resource
 Resource    ${CURDIR}/resources/keywords/register_keywords.resource
+
 
 
 #    Locator Section
