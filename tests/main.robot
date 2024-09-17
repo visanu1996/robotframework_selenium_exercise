@@ -5,7 +5,7 @@ Suite Teardown    Close All Browsers
 
 *** Test Cases ***
 Home Page Verify
-    common_keywords.page_verification    Home
+    common_keywords.page_verification    Home    #if home is the current page it will reloading the page
 
 Signin
     common_keywords.sign_login_page
@@ -63,3 +63,9 @@ Search Products
     product_keywords.product_page
     product_keywords.search_product    product_name=Blue Top
     common_keywords.screen_capture    test_module=search product
+
+Verify Home Page Subcription
+    [Tags]    home_sub
+    common_keywords.page_verification    Home    #if home is the current page it will reloading the page
+    common_keywords.Home_subscribe
+    common_keywords.screen_capture    test_module=subscribe

@@ -1,7 +1,7 @@
 *** Keywords ***
 open website
     
-    Open Browser    ${WEB_BROWSER}    ${WEB_DRIVER}
+    Open Browser    ${web_variables.WEB_BROWSER}    ${web_variables.WEB_DRIVER}
     Maximize Browser Window
     Sleep    3
 
@@ -52,7 +52,7 @@ screen_capture
     ${path}    Normalize Path    ${CURDIR}../../../results/snapshots/
     ${is_exist}    Run Keyword And Return Status    Directory Should Exist    ${path}
     Run Keyword If    not ${is_exist}    Create Directory    ${path}
-    Sleep    5
+    Sleep    1
     Screenshot.Set Screenshot Directory    ${path}
     Screenshot.Take Screenshot    ${test_module}_${date}    100%    
 
@@ -61,13 +61,13 @@ go_to_text
     ...                *Best to use* if there is a single word you are trying to find.
     [Arguments]    ${goto}
     ${is_error}    Run Keyword And Return Status    Wait Until Element Is Visible    //*[contains(text(), '${goto}')]
-    Run Keyword If    not ${is_error}    Scroll Element Into View     //*[contains(text(), '${goto}')]
+    Run Keyword If    ${is_error}    Scroll Element Into View     //*[contains(text(), '${goto}')]    #for web it will be visible even when you can't see with you own eyes, if using with mobile add not at the front of ${is_error}
 
 go_to_element
     [Documentation]    Scroll to an element on the current page.
     [Arguments]    ${element}
     ${is_error}    Run Keyword And Return Status    Wait Until Element Is Visible    ${element}
-    Run Keyword If    not ${is_error}    Scroll Element Into View     ${element}
+    Run Keyword If    ${is_error}    Scroll Element Into View     ${element}
 
 sign_out
     Click Element    ${nav_bar['logout_btn']}
@@ -92,7 +92,7 @@ Wait_until_element_visible_and_click
     [Documentation]    wait until element is Visible with for loop
     [Arguments]    ${element}
     ${is_visible}    Run Keyword And Return Status     Wait Until Element Is Visible    ${element}    5
-    FOR    ${counter}    IN RANGE    1    ${global_count}
+    FOR    ${counter}    IN RANGE    1    ${web_variables.global_count}
         IF    ${is_visible}    
             Click Element    ${element}    
             Exit For Loop
@@ -104,10 +104,18 @@ Wait_until_element_visible_and_insert
     [Documentation]    wait until element is Visible with for loop
     [Arguments]    ${element}    ${text}
     ${is_visible}    Run Keyword And Return Status     Wait Until Element Is Visible    ${element}    5
-    FOR    ${counter}    IN RANGE    1    ${global_count}
+    FOR    ${counter}    IN RANGE    1    ${web_variables.global_count}
         IF    ${is_visible}    
             Input Text    ${element}    ${text}   
             Exit For Loop
         END
     END
     Run Keyword If    not ${is_visible}    Log    Element not found.
+
+Home_subscribe
+    [Documentation]    to subscribe at home page
+    [Arguments]    ${email}=test@testtest.com    #change when you need to test with real email.
+    go_to_element    ${footer['footer']}
+    Sleep    3
+    Wait_until_element_visible_and_insert    ${footer['subscribe_input']}     ${email}
+    Wait_until_element_visible_and_click    ${footer['submit_btn']}    
