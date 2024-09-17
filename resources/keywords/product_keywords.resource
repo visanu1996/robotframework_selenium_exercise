@@ -1,3 +1,5 @@
+*** Settings ***
+Resource    common_keywords.resource
 *** Keywords ***
 product_page
     [Documentation]    go to product page
@@ -26,3 +28,4 @@ search_product
     [Arguments]    ${product_name}
     common_keywords.Wait_until_element_visible_and_insert    ${search_product}    ${product_name}
     common_keywords.Wait_until_element_visible_and_click    ${search_submit}
+    common_keywords.go_to_element    ${first_product}

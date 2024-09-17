@@ -1,4 +1,0 @@
-*** Variables ***
-${WEB_BROWSER}    https://www.automationexercise.com/
-${WEB_DRIVER}    chrome
-${global_count}    5    # for counting in loop
