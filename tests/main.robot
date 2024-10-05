@@ -5,6 +5,7 @@ Suite Teardown    Close All Browsers
 
 *** Test Cases ***
 Home Page Verify
+    [Tags]    home_verify
     common_keywords.page_verification    Home    #if home is the current page it will reloading the page
 
 Signin
@@ -66,6 +67,15 @@ Search Products
 
 Verify Home Page Subcription
     [Tags]    home_sub
-    common_keywords.page_verification    Home    #if home is the current page it will reloading the page
+    common_keywords.page_verification    Home
     common_keywords.Home_subscribe
     common_keywords.screen_capture    test_module=subscribe
+
+Add Products in Cart
+    [Tags]    shopping
+
+    product_keywords.product_page
+    common_keywords.page_verification    Category
+    product_keywords.add_products    Blue Top    Fancy Green Top    Soft Stretch Jeans
+    
+    # can't click add to card due to something.

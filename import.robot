@@ -5,7 +5,6 @@ Library    String
 Library    OperatingSystem
 Library    DateTime
 Library    Screenshot
-Library    YAMLLibrary
 
 
 #    Keywords Section

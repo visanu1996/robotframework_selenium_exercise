@@ -1,3 +1,5 @@
+*** Settings ***
+Resource    ../../import.robot
 *** Keywords ***
 register
     [Documentation]    to use this keyword you can pass two parameter the first one is an *email* the second is a *password*
