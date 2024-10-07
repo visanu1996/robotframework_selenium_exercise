@@ -4,4 +4,3 @@
 &{login_page_locator}    email=//form[@action="/login"]/input[@name = 'email']    password=password    confirm_login=//button[@data-qa="login-button"]    verify_text=Login to your account
 &{contact_locator}    name=name    email=email    subject=subject    body=message    file_upload=upload_file    submit_btn=submit    verify_page=//h2[contains(.,'Feedback')]    #use most by name or id
 &{footer}    footer=//p[contains(.,'Copyright ')]    subscribe_input=id=susbscribe_email    header=//h2[.='Subscription']    submit_btn=//button[@id='subscribe']
-

@@ -5,14 +5,13 @@ Library    String
 Library    OperatingSystem
 Library    DateTime
 Library    Screenshot
-Library    YAMLLibrary
 
 
 #    Keywords Section
 Resource    ${CURDIR}/resources/keywords/common_keywords.resource
 Resource    ${CURDIR}/resources/keywords/product_keywords.resource
 Resource    ${CURDIR}/resources/keywords/register_keywords.resource
-
+Resource    ${CURDIR}/resources/keywords/cart_keywords.resource
 
 
 #    Locator Section
