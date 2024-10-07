@@ -11,17 +11,24 @@ view_product
     common_keywords.Wait_until_element_visible_and_click    //a[@href='/product_details/${product_id}']
 
 
-verify_product_view
-    [Documentation]    to verify that the detail in product view is not empty
+get_product_view_text
+    [Documentation]    to verify that the detail in product view and return dictionary
     ${name}    Get Text    ${product_details['name']}
     ${category}    Get Text    ${product_details['category']}
     ${price}    Get Text    ${product_details['price']}
     ${availability}    Get Text    ${product_details['availability']}
     ${condition}    Get Text    ${product_details['condition']}
     ${brand}    Get Text    ${product_details['brand']}
-    @{product_details}    Create List    ${name}    ${category}    ${price}    ${availability}    ${condition}    ${brand}
-    Log    product details : @{product_details}
+    ${qty}    Get Value    ${product_details['qty']}
+    &{product_details}    Create Dictionary    name=${name}    cate=${category}    price=${price}    available=${availability}    condition=${condition}    brand=${brand}    qty=${qty}   
+    RETURN    &{product_details}
 
+set_product_quantity
+    [Documentation]    to set product qty need to use inside after use view_product keywords and add tocart
+    [Arguments]    ${qty}
+    common_keywords.Wait_until_element_visible_and_insert    ${product_details['qty']}    ${qty}
+    common_keywords.Wait_until_element_visible_and_click    ${product_details['add']}
+    common_keywords.Wait_until_element_visible_and_click    ${carts['continue_shop']}
 
 search_product
     [Documentation]    to search product by product name
@@ -30,7 +37,7 @@ search_product
     common_keywords.Wait_until_element_visible_and_click    ${search_submit}
     common_keywords.go_to_element    ${first_product}
 
-Add Products
+add_products
     [Documentation]    To add products to the cart, provide a list like: 
     ...                add_product_list    *T-Shirt    Blue-Top    Dress*     
     [Arguments]    @{item_list}
@@ -53,8 +60,6 @@ Add Products
             common_keywords.Wait_until_element_visible_and_click    ${carts['continue_shop']}
         ELSE
             common_keywords.Wait_until_element_visible_and_click    ${carts['view_cart']}
-            common_keywords.go_to_text    ${item_list}[${count} - 1]
-            common_keywords.screen_capture    test_module=add_products
         END
     END
        

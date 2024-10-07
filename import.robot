@@ -11,7 +11,7 @@ Library    Screenshot
 Resource    ${CURDIR}/resources/keywords/common_keywords.resource
 Resource    ${CURDIR}/resources/keywords/product_keywords.resource
 Resource    ${CURDIR}/resources/keywords/register_keywords.resource
-
+Resource    ${CURDIR}/resources/keywords/cart_keywords.resource
 
 
 #    Locator Section

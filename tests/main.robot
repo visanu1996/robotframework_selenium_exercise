@@ -2,6 +2,7 @@
 Resource    ../import.robot
 Suite Setup    common_keywords.open website
 Suite Teardown    Close All Browsers    
+# 
 
 *** Test Cases ***
 Home Page Verify
@@ -9,8 +10,9 @@ Home Page Verify
     common_keywords.page_verification    Home    #if home is the current page it will reloading the page
 
 Signin
+    [Tags]    signin
     common_keywords.sign_login_page
-    register_keywords.register    testName    robottesting10234@gmail.com
+    register_keywords.register    testName2    robottesting101@gmail.com
     common_keywords.go_to_text    Enter Account
     register_keywords.add_account_info    FakePassword!    dob=1994/1/1
     register_keywords.add_address_info    FirstName    LastName    india    0555555555
@@ -20,10 +22,11 @@ Signin
     common_keywords.sign_out
     
 Login
+    [Tags]    login
     common_keywords.sign_login_page
     common_keywords.page_verification    ${login_page_locator['verify_text']}  
     common_keywords.screen_capture    test_module=login
-    common_keywords.login    login_email=robottesting10234@gmail.com    login_password=FakePassword!
+    common_keywords.login    login_email=robottesting101@gmail.com    login_password=FakePassword!
     common_keywords.sign_out
 
 Login Fault Account
@@ -53,7 +56,8 @@ Products
     product_keywords.product_page
     common_keywords.screen_capture    test_module=products
     product_keywords.view_product    product_id=1
-    product_keywords.verify_product_view
+    &{product}    product_keywords.get_product_view_text
+    Log    ${product}
 Verify Testcases Page
     [Tags]    testcases_page
     common_keywords.test_cases_page
@@ -77,5 +81,15 @@ Add Products in Cart
     product_keywords.product_page
     common_keywords.page_verification    Category
     product_keywords.add_products    Blue Top    Fancy Green Top    Soft Stretch Jeans
-    
-    # can't click add to card due to something.
+    common_keywords.screen_capture    test_module=add_products
+Verify Product quantity in Cart
+    [Documentation]    to verify product quantity    
+    [Tags]    qty_cart
+    product_keywords.product_page
+    product_keywords.view_product    product_id=1
+    product_keywords.set_product_quantity    4
+    &{product}    product_keywords.get_product_view_text
+    Log    product_view: &{product}
+    common_keywords.cart_page
+    cart_keywords.verify_cart_item    ${product['name']}    &{product} 
+    common_keywords.screen_capture    test_module=cart_qty

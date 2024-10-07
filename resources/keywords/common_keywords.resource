@@ -24,6 +24,9 @@ contact_us
     [Documentation]    go to contact us
     Wait_until_element_visible_and_click    ${nav_bar['contact_btn']}
 
+cart_page
+    [Documentation]    go to cart page
+    Wait_until_element_visible_and_click    ${nav_bar['cart_btn']}
 login
     [Documentation]    to use this keyword you can pass two parameter the first one is an *email* the second is a *password*
     [Arguments]    ${login_email}    ${login_password}
@@ -88,8 +91,7 @@ Wait_until_element_visible_and_click
     [Arguments]    ${element}
     ${is_visible}    Run Keyword And Return Status     Wait Until Element Is Visible    ${element}    ${web_variables.global_wait}
     FOR    ${counter}    IN RANGE    1    ${web_variables.global_count}
-        IF    ${is_visible}
-            Execute Javascript       
+        IF    ${is_visible}      
             Click Element    ${element}    
             Exit For Loop
         END
@@ -114,4 +116,4 @@ Home_subscribe
     go_to_element    ${footer['footer']}
     Sleep    2
     Wait_until_element_visible_and_insert    ${footer['subscribe_input']}     ${email}
-    Wait_until_element_visible_and_click    ${footer['submit_btn']}    
+    Wait_until_element_visible_and_click    ${footer['submit_btn']}

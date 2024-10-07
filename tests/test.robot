@@ -16,4 +16,3 @@ for_loop2
     FOR    ${key}    ${value}    IN    &{item}
         Log To Console    Key: ${key}, Value: ${value}
     END
-*** Test Cases ***
