@@ -93,4 +93,3 @@ local_settings.py
 *.out
 
 # Custom: Add any other files or directories specific to your project
-*.gitignore
