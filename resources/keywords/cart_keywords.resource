@@ -1,5 +1,6 @@
 *** Settings ***
 Library    SeleniumLibrary
+Resource    ../../import.robot
 *** Keywords ***
 verify_cart_item
     [Documentation]    to verify item qty by name
@@ -16,3 +17,20 @@ verify_cart_item
         Log    No item was found with this name
     END
 
+delete_cart_item_by_name
+    [Documentation]    to delete cart item by name
+    [Arguments]   @{item_list}
+    
+        FOR  ${item}  IN  @{item_list}
+            ${is_error}    Run Keyword And Return Status    Wait Until Element Is Visible    //a[.='${item}']/ancestor::tr
+
+            IF    ${is_error}
+                common_keywords.Wait_until_element_visible_and_click    //a[.='${item}']/ancestor::tr//a[@class = "cart_quantity_delete"]
+            ELSE
+                log    ${item} not found in cart, can't delete it.
+            END
+
+        END
+        
+
+    # //a[.='Blue Top']/ancestor::tr//a[@class="cart_quantity_delete"]

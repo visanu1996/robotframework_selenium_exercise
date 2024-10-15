@@ -24,7 +24,7 @@ get_product_view_text
     RETURN    &{product_details}
 
 set_product_quantity
-    [Documentation]    to set product qty need to use inside after use view_product keywords and add tocart
+    [Documentation]    to set product qty need to use inside after use view_product keywords and add to cart
     [Arguments]    ${qty}
     common_keywords.Wait_until_element_visible_and_insert    ${product_details['qty']}    ${qty}
     common_keywords.Wait_until_element_visible_and_click    ${product_details['add']}
