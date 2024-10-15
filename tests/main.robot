@@ -83,8 +83,8 @@ Add Products in Cart
     product_keywords.add_products    Blue Top    Fancy Green Top    Soft Stretch Jeans
     common_keywords.screen_capture    test_module=add_products
 Verify Product quantity in Cart
-    [Documentation]    to verify product quantity    
     [Tags]    qty_cart
+    
     product_keywords.product_page
     product_keywords.view_product    product_id=1
     product_keywords.set_product_quantity    4
@@ -93,3 +93,12 @@ Verify Product quantity in Cart
     common_keywords.cart_page
     cart_keywords.verify_cart_item    ${product['name']}    &{product} 
     common_keywords.screen_capture    test_module=cart_qty
+
+Remove Products From Cart
+    [Tags]    item_del
+    
+    product_keywords.product_page
+    common_keywords.page_verification    Category
+    product_keywords.add_products    Blue Top    Fancy Green Top    Soft Stretch Jeans
+    cart_keywords.delete_cart_item_by_name    Blue Top    Fancy Green Top
+    common_keywords.screen_capture    test_module=item_del
