@@ -5,7 +5,7 @@ Library    String
 Library    OperatingSystem
 Library    DateTime
 Library    Screenshot
-
+Library    ./resources/Libraries/request.py
 
 #    Keywords Section
 Resource    ${CURDIR}/resources/keywords/common_keywords.resource
