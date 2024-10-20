@@ -9,8 +9,8 @@ Home Page Verify
     [Tags]    home_verify
     common_keywords.page_verification    Home    #if home is the current page it will reloading the page
 
-Signin
-    [Tags]    signin
+Register
+    [Tags]    regis
     common_keywords.sign_login_page
     register_keywords.register    testName2    robottesting101@gmail.com
     common_keywords.go_to_text    Enter Account
@@ -102,3 +102,18 @@ Remove Products From Cart
     product_keywords.add_products    Blue Top    Fancy Green Top    Soft Stretch Jeans
     cart_keywords.delete_cart_item_by_name    Blue Top    Fancy Green Top
     common_keywords.screen_capture    test_module=item_del
+
+Create Account Via API
+    [Tags]    regis_api
+    ${result}    api_fetch   https://automationexercise.com/api/createAccount    post
+    Log To Console    ${result}
+    
+
+Delete Account Via API
+    [Tags]    delete_api        
+    ${data}    Create Dictionary    email=${user['email']}    password=${user['password']}
+    ${result}    api_fetch    https://automationexercise.com/api/deleteAccount    delete    ${data}
+    Log To Console    ${result}
+
+
+     
