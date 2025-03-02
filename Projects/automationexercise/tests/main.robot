@@ -12,7 +12,7 @@ Home Page Verify
 Register
     [Tags]    regis
     common_keywords.sign_login_page
-    register_keywords.register    testName2    robottesting101@gmail.com
+    register_keywords.register    testName23    robottesting1021@gmail.com
     common_keywords.go_to_text    Enter Account
     register_keywords.add_account_info    FakePassword!    dob=1994/1/1
     register_keywords.add_address_info    FirstName    LastName    india    0555555555

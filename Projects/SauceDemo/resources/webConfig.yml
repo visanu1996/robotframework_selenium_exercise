@@ -1,0 +1,14 @@
+WEB: 
+  url: https://www.saucedemo.com/v1/
+  driver: chrome
+login_user:
+  standard: standard_user    
+  locked: locked_out_user    
+  problem: problem_user    
+  perf: performance_glitch_user
+
+pass: secret_sauce
+
+global_variable:
+  global_count: 3  # for counting in loop
+  global_wait: 5
