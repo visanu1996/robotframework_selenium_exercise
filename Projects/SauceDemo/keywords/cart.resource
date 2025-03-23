@@ -52,3 +52,22 @@ Add_Item_To_Cart
     ELSE
         Click Element    ${add_item}
     END
+
+Get_Total_Item_In_Cart
+    [Documentation]    to check total items that you put in your cart.
+    ${status}    Verify_Item_Existence    ${cart_logo_qty}
+
+    IF    ${status}
+        ${total_items}    Get Text    ${cart_logo_qty}
+    END
+    
+    Log    Total item in cart : ${total_items}
+
+Check_Cart_Inventory
+    [Documentation]    to check item inside cart with screen capture.
+    ${status}    Verify_Item_Existence    ${cart_logo_qty}
+    IF    ${status}
+        Click Element    ${cart_logo_qty}
+        Sleep    1s
+        Capture Page Screenshot    EMBED
+    END
