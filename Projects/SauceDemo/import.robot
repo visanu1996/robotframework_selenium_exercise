@@ -13,7 +13,7 @@ Resource    ${CURDIR}/resources/loginLocator.resource
 Resource    ${CURDIR}/resources/cartLocator.resource
 
 
-
+# YML Config File
 Variables    ${CURDIR}/resources/webConfig.yml
 
 
