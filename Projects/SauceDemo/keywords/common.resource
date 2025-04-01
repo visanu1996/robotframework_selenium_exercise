@@ -3,7 +3,9 @@ Library    SeleniumLibrary
 
 *** Keywords ***
 
-
+Open Sauce Demo
+    Open Browser    ${WEB['url']}    ${WEB['driver']}    executable_path=C:/Selenium/chromedriver.exe
+    
 verify_element
     [Documentation]     use to verify that element is on page or not
     [Arguments]    ${element}
