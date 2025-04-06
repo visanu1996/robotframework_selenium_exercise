@@ -6,15 +6,13 @@ Suite Setup    Open Sauce Demo
 *** Test Cases ***
 Add_item_with_normal_user
     [Tags]    add-item
-    ${item_name} =    Set Variable    Bike Light
-
 
     login.Login_User    ${login_user['standard']}    ${pass}
     common.verify_element    xpath=//div[.='Products']
     Sleep    3
-    Get_Item_Details    ${item_name}
-    Add_Item_To_Cart     ${item_name}
-    Capture Page Screenshot    EMBED
+
+    Get_Item_Details_And_Add_To_Cart    Bike Light
+    Get_Item_Details_And_Add_To_Cart    Fleece
 
 Check_total_item
     Sleep    2s
