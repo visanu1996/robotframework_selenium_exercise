@@ -22,10 +22,10 @@ Verify_Item_Existence
     Run Keyword If    not ${status}    Log    No element found for ${item_xpath}.
     RETURN    ${status}
 
-Get_Item_Details
-    [Documentation]    use to get item details by contains item name
+Get_Item_Details_And_Add_To_Cart
+    [Documentation]    use to get item details by contains item name and add it to the cart.
     [Arguments]    ${i_name}
-    
+
     Set_Item_Locators    ${i_name}
 
     ${status}    Verify_Item_Existence    ${item_card}
@@ -37,19 +37,7 @@ Get_Item_Details
 
         Log    The price of ${i_name} is: ${price}
         Log    The description of ${i_name} is: ${description}
-    END
 
-
-Add_Item_To_Cart
-    [Documentation]    use to add an item to cart by contains item name
-    [Arguments]    ${i_name}
-
-    &{locators}    Set_Item_Locators    ${i_name}
-    
-    ${status}    Verify_Item_Existence    ${item_card}
-    IF    not ${status}
-        Log    no element found in Add_item_to_cart.
-    ELSE
         Click Element    ${add_item}
     END
 
